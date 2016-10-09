@@ -1,0 +1,27 @@
+---
+    # - set_fact:
+    #     my_ssh_key: "{{ lookup('env','HOME') }}/.ssh/id_rsa.pub"
+
+    # - name: copy key
+    #   become_method: sudo
+    #   authorized_key: user=jandre 
+    #                   key="{{ lookup('file', my_ssh_key) }}"
+
+
+    - name: Create the Github SSH public key file
+      copy: src="~/.ssh/id_rsa.pub"
+            dest="/root/.ssh/id_rsa.pub"
+            mode=0644
+
+    - name: Create the Github SSH private key file
+      copy: src="~/.ssh/id_rsa"
+            dest="/root/.ssh/id_rsa"
+            mode=0600
+
+    - name: get project from gitlab
+      git: repo=git@gitlab:idcheckio/manualAnalyseReport.git
+           dest="{{projectdir}}"
+           accept_hostkey=yes
+
+    - name: run npm install to install packages
+      npm: path="{{projectdir}}"

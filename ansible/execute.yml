@@ -1,0 +1,7 @@
+---
+   - name: launch pm2
+     become: yes
+     become_method: sudo
+     shell: pm2 start pm2Launch.json
+     args:
+       chdir: "{{projectdir}}"

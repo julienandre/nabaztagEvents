@@ -1,0 +1,26 @@
+{
+	"apps": [
+      {
+        "name": "nabaztagEvents",
+        "script": "main.js",
+        "args": [],
+        "exec_interpreter" : "node",
+        "node_args": "",
+
+        "out_file"         : "./logs/out.log",
+        "err_file"         : "./logs/err.log",
+        "pid_file"         : "./logs/pid",
+        "merge_logs": false,
+
+        "max_memory_restart": "200M",
+        "max_restarts"     : 10,
+        "autorestart" : true,
+        "watch": false,
+
+        "cwd": "/opt/nabaztagEvents",
+        "env": {
+          "NODE_ENV": "QUALIF"
+        }
+      }
+	]
+}
