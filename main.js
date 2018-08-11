@@ -16,7 +16,7 @@ var client = inbox.createConnection(false, "imap.gmail.com", {
 client.connect();
 
 client.on("connect", function(){
-    console.log("Successfully connected to server");
+    console.log("Successfully connected to mail : "+mailConfig.login);
     client.listMailboxes(function(err, mboxes){
       console.log("listMailboxes : "+mboxes.length);
       for( var b=0 ; b<mboxes.length ;  b++ ){
@@ -29,6 +29,9 @@ client.on("connect", function(){
         client.on("new", function(message){
           console.log("New incoming message " + message.title);
           cmd.earsTurn('left');
+          setTimeout(()=>{
+            cmd.earsTurn('right');
+          },1000);
         });
 
 

@@ -16,11 +16,6 @@
         "max_restarts"     : 10,
         "autorestart" : true,
         "watch": false,
-
-        "cwd": "/opt/nabaztagEvents",
-        "env": {
-          "NODE_ENV": "QUALIF"
-        }
       }
 	]
 }
